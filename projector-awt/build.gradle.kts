@@ -19,6 +19,7 @@
 plugins {
   kotlin("jvm")
   `maven-publish`
+  java
 }
 
 publishing {
@@ -36,4 +37,10 @@ dependencies {
   implementation("com.github.JetBrains.projector-client:projector-util-logging:$projectorClientVersion")
   testImplementation(kotlin("test", kotlinVersion))
   testImplementation(kotlin("test-junit", kotlinVersion))
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))    
+    }
 }

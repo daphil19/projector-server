@@ -1,6 +1,13 @@
 plugins {
   id("org.jetbrains.kotlin.jvm")
   id("maven-publish")
+  id("java")
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))    
+    }
 }
 
 publishing {
@@ -19,7 +26,10 @@ kotlin {
 }
 
 compileKotlin {
-  kotlinOptions.jvmTarget = targetJvm
+  kotlinOptions {
+    jvmTarget = targetJvm
+    jdkHome = compiler.get().metadata.installationPath.asFile.absolutePath
+  }
 }
 
 dependencies {

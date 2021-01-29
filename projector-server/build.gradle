@@ -23,7 +23,15 @@ plugins {
   id("org.jetbrains.kotlin.jvm")
   id("application")
   id("maven-publish")
+  id("java")
 }
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))    
+    }
+}
+
 
 application {
   mainClassName = "org.jetbrains.projector.server.ProjectorLauncher"

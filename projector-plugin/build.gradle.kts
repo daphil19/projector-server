@@ -21,6 +21,7 @@ import org.jetbrains.intellij.tasks.PatchPluginXmlTask
 plugins {
   kotlin("jvm")
   id("org.jetbrains.intellij")
+  java
 }
 
 val projectorClientVersion: String by project
@@ -46,4 +47,10 @@ tasks.withType<PatchPluginXmlTask> {
     <em>most HTML tags may be used</em>
     """
   )
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))    
+    }
 }
